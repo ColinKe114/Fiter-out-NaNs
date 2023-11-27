@@ -1,7 +1,7 @@
 # Fiter-out-NaNs
 Filter out undesired NaN data using Pandas
 
-This repository filters out NaN data for homicide rate from the dataset County Health Data 2014-2015. The final dataset with NaN data filtered out is in the file *CKe Feeder 3.1 csv*.
+This repository filters out NaN data for homicide rate from the dataset County Health Data 2014-2015 for better analysis. The final dataset with NaN data filtered out is in the file *CKe Feeder 3.1 csv*.
 
 Procedural instructions:
 1. Input code: *import pandas as pd* to make sure every step below can be performed successfully with pandas.
