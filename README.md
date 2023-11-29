@@ -24,10 +24,33 @@ The overall process would be
 
 ## Read and define basic elements
 1. Input code: *import pandas as pd* to make sure every step below can be performed successfully with pandas.
-2. Define the data frame with code:* df=pd.read_csv("CountyHealthData_2014-2015.csv") *to perform the following steps based on our original dataset.
+
+            import pandas as pd
+3. Define the data frame with code:* df=pd.read_csv("CountyHealthData_2014-2015.csv") *to perform the following steps based on our original dataset.
+   
+            df=pd.read_csv("CountyHealthData_2014-2015.csv")
 
 ## Filter out the undesired parts of the data
 4. To filter out the NaN data, that does not contain wanted numerical information, use the code df.dropna. As a result, we will create a new dataframe called df_filtered. This can be done by inputting: *df_filtered = df.dropna(subset=['Interest_set'])*. The interest_set can be any column that we are interested in. In this case, it would be *Homicide rate*.
-5. The further actions performed on df_filtered would bring results without any NaN value in the interested column. In the resulting dataset here, "NaN" homicide rate would not show up any more.
+
+         df_filtered = df.dropna(subset=['Homicide rate'])
+   
+6. The further actions performed on df_filtered would bring results without any NaN value in the interested column. In the resulting dataset here, "NaN" homicide rate would not show up anymore.
+7. The data frame here still contains columns we do not need for our particular analysis. We would filter out those factors as well with the data frame we obtained from the last step.
+
+   In order to do so, we would define our final data frame by command:
+
+         df_filtered_2=df_filtered[["State","Year","Homicide rate"]]
+   By putting the *exact* names of the columns we want, we have only those columns remain in this new data frame!
 
 ## Export the outcome as a csv. file
+1. We have removed the data we do not want and compiled a subset specifically for our analysis! Let's export it as a csv. file so that we can import this subset into various data-analyzing platforms such as Excel and R.
+2. We can use *from google colab import files* and "to_csv." command to help us with this step.
+
+   The command would look like:
+   
+         from google.colab import files 
+         df_filtered_2.to_csv('output.csv', encoding = 'utf-8-sig')
+         files.download('output.csv')
+   We are all done! But there is one last tip.
+   - Make sure the final subset we export is the data frame we have filtered out undesired factors! In this case, it should be df_filtered_2, not df or df_filtered.
